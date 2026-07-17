@@ -36,6 +36,35 @@ const { title } = Astro.props;
 				top: 0;
 				z-index: 1000;
 			}
+			.home-container {
+			display: flex;
+			flex-direction: column;
+			gap: 60px;
+		}
+
+		.hero {
+			text-align: center;
+			padding: 60px 20px;
+			background-color:#c6ff81;
+			color:#0b1544;
+			border-radius: 10px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+		}
+		.tekst-container {
+			display: flex;
+			flex-direction: column;
+			gap: 60px;
+			width : 80%;
+		}
+
+		.tekst {
+			text-align: left;
+			padding: 60px 20px;
+			background-color:#ffffff;
+			color:#0b1544;
+			border-radius: 10px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+		}
 
 .header-container {
     max-width: 1200px;
@@ -64,6 +93,9 @@ nav ul {
     align-items: center;
     gap: 15px;
     flex-wrap: nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 			nav a {
@@ -128,7 +160,7 @@ nav ul {
 				<nav>
 					<ul>
 						<li><a href="/">Početna</a></li>
-						<li><a href="/o-nama">O nama</a></li>
+						<li><a href="/o-nama">O&nbsp;nama</a></li>
 						<li><a href="/novosti">Novosti</a></li>
 						<li><a href="/aktivnosti">Aktivnosti</a></li>
 						<li><a href="/galerija">Galerija</a></li>
@@ -143,7 +175,7 @@ nav ul {
 		</main>
 
 		<footer>
-			<p>&copy; 2026 DDOS. Sva prava zadržana.</p>
+			<p>&copy; 2026 DDOS</p>
 		</footer>
 	</body>
 </html>
