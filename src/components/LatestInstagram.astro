@@ -1,0 +1,25 @@
+---
+import snapshot from '../../public/data/external-news.json';
+import { latestInstagram, renderNewsCard } from '../lib/news-feed.mjs';
+import InstagramEmbed from './InstagramEmbed.astro';
+const source = { id: 'instagram', title: 'DDOS na Instagramu', url: 'https://www.instagram.com/ddos_elfak/' };
+const post = latestInstagram(snapshot.sources.find((item) => item.id === 'instagram'));
+---
+<section class="tekst instagram-section" aria-labelledby="instagram-title">
+  <div class="instagram-intro"><img src="/instagram-svgrepo-com.svg" alt="" width="40" height="40" /><h2 id="instagram-title">Najnovije sa Instagrama</h2><p>Naša zajednica, događaji i trenuci sa fakulteta.</p><a href={source.url} target="_blank" rel="noopener noreferrer">@ddos_elfak ↗</a></div>
+  <div class="instagram-latest" data-instagram-latest>{post ? <Fragment set:html={renderNewsCard(post, source)} /> : <InstagramEmbed />}</div>
+</section>
+<script>
+  import { latestInstagram, renderNewsCard } from '../lib/news-feed.mjs';
+  import { cmsConfigured, fetchEntries } from '../lib/cms.mjs';
+  import { photoUrl } from '../lib/render-content.mjs';
+  import { loadNewsSnapshot } from '../lib/news-snapshot.mjs';
+  const container = document.querySelector<HTMLElement>('[data-instagram-latest]');
+  if (container) {
+    const source = { id: 'instagram', title: 'DDOS na Instagramu' };
+    let saved: any[] = [];
+    const show = () => { const post = latestInstagram({ items: saved }); if (post) container.innerHTML = renderNewsCard(post, source); };
+    loadNewsSnapshot(fetch, import.meta.env.PROD).then((data) => { saved.push(...(data.sources?.find((item: any) => item.id === 'instagram')?.items || [])); show(); }).catch(() => {});
+    if (cmsConfigured) fetchEntries('instagramPost', { limit: 1 }).then(({ items }) => { saved.push(...items.map((item: any) => ({ title: item.title, url: item.permalink, date: item.date, publishedAt: item.publishedAt, image: photoUrl(item.image, 1000) }))); show(); }).catch(() => {});
+  }
+</script>

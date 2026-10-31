@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { site } from '../config/site';
+---
+<Layout title="Pridruži nam se" description="Pridruži se DDOS studentskoj zajednici na Elektronskom fakultetu. Otvori prijavu za učlanjenje i poveži se sa nama.">
+  <section class="hero">
+    <h1>Pridruži nam se</h1>
+    <p class="subtitle">Budi deo DDOS zajednice</p>
+    <p class="description">Želiš da nam se pridružiš? Popuni prijavu putem našeg Google obrasca.</p>
+    <a href={site.joinUrl} class="cta-button" target="_blank" rel="noopener noreferrer">Otvori prijavu</a>
+    <SocialLinks />
+  </section>
+</Layout>

@@ -1,0 +1,77 @@
+---
+import { renderEntry } from '../lib/render-content.mjs';
+import { cmsConfigured, fetchEntries } from '../lib/cms.mjs';
+interface Props { kind: 'news' | 'event' | 'album'; items?: any[]; emptyTitle: string; emptyMessage: string; }
+const { kind, items = [], emptyTitle, emptyMessage } = Astro.props;
+let initial = items;
+if (cmsConfigured) {
+  try { initial = (await fetchEntries(kind, { limit: kind === 'album' ? 6 : 10 })).items; }
+  catch { console.warn('CMS sadržaj nije dostupan tokom builda; stranica će ga ponovo učitati u browseru.'); }
+}
+---
+<div class="content-feed" data-content-kind={kind}>
+  <p class="feed-status content-note" role="status" aria-live="polite"></p>
+  <div class="content-list" data-feed-items set:html={initial.map((item) => renderEntry(item, kind)).join('')} />
+  <div class="empty-state" data-feed-empty hidden={initial.length > 0}><h2>{emptyTitle}</h2><p>{emptyMessage}</p></div>
+  <div class="feed-controls"><button class="cta-button" type="button" data-feed-more hidden>Prikaži još</button></div>
+  {cmsConfigured && <noscript><p class="content-note">Prikazan je sadržaj iz poslednjeg ažuriranja sajta. Za aktuelne objave i učitavanje još sadržaja uključi JavaScript.</p></noscript>}
+</div>
+<script>
+  import { cmsConfigured, fetchEntries } from '../lib/cms.mjs';
+  import { renderEntry, entryId } from '../lib/render-content.mjs';
+  for (const feed of document.querySelectorAll<HTMLElement>('[data-content-kind]')) {
+    feed.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element)) return;
+      const link = event.target.closest('[data-open-album]');
+      if (link) { const details = link.closest('article')?.querySelector('details'); if (details) details.open = true; }
+    });
+    if (!cmsConfigured) continue;
+    const kind = feed.dataset.contentKind!;
+    const list = feed.querySelector<HTMLElement>('[data-feed-items]')!;
+    const empty = feed.querySelector<HTMLElement>('[data-feed-empty]')!;
+    const status = feed.querySelector<HTMLElement>('.feed-status')!;
+    const more = feed.querySelector<HTMLButtonElement>('[data-feed-more]')!;
+    let offset = 0;
+    let loading = false;
+    const load = async () => {
+      if (loading) return;
+      loading = true; more.disabled = true;
+      status.textContent = 'Učitavanje objava…';
+      try {
+        const result = await fetchEntries(kind, { offset, limit: kind === 'album' ? 6 : 10 });
+        const html = result.items.filter((item: any) => offset === 0 || !document.getElementById(entryId(item, kind === 'album' ? 'album' : kind === 'event' ? 'event' : 'post'))).map((item: any) => renderEntry(item, kind)).join('');
+        if (offset === 0) list.innerHTML = html; else list.insertAdjacentHTML('beforeend', html);
+        offset += result.items.length;
+        more.hidden = !result.hasMore;
+        empty.hidden = offset > 0;
+        status.textContent = '';
+        if (offset === result.items.length) await loadHash();
+        revealHash();
+      } catch {
+        // Već prikazane objave ostaju dostupne i kada osvežavanje ne uspe.
+        status.textContent = '';
+        empty.hidden = list.querySelector('article') !== null;
+      } finally { loading = false; more.disabled = false; }
+    };
+    const revealHash = () => {
+      let id; try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+      const article = id && document.getElementById(id);
+      if (article && feed.contains(article)) {
+        const details = article.querySelector('details'); if (details) details.open = true;
+        article.scrollIntoView();
+      }
+    };
+    const loadHash = async () => {
+      let id; try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+      const prefix = kind === 'album' ? 'album-' : kind === 'event' ? 'event-' : 'post-';
+      if (!id.startsWith(prefix) || document.getElementById(id)) return;
+      try {
+        const result = await fetchEntries(kind, { slug: id.slice(prefix.length), limit: 1 });
+        if (result.items[0]) list.insertAdjacentHTML('beforeend', renderEntry(result.items[0], kind));
+      } catch { /* Redovna lista ostaje dostupna i ako stara objava nije dostupna. */ }
+    };
+    more.addEventListener('click', load);
+    window.addEventListener('hashchange', () => { void loadHash().then(revealHash); });
+    void load();
+  }
+</script>

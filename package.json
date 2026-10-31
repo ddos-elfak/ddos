@@ -3,15 +3,25 @@
   "type": "module",
   "version": "0.0.1",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.23.4"
   },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "feeds:update": "node --env-file-if-exists=.env --experimental-strip-types scripts/update-feeds.mjs",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "check": "npm run test && npm run build && node scripts/check-build.mjs",
+    "astro": "astro",
+    "cms:setup": "node scripts/setup-cms.mjs",
+    "cms:login": "npm --prefix cms run login",
+    "cms:dev": "node scripts/require-cms.mjs && npm --prefix cms run dev",
+    "cms:build": "npm --prefix cms run build",
+    "cms:deploy": "node scripts/require-cms.mjs && npm --prefix cms run deploy"
   },
   "dependencies": {
-    "astro": "^6.4.2"
+    "@portabletext/to-html": "6.0.0",
+    "astro": "7.4.4",
+    "cheerio": "1.2.0"
   }
 }

@@ -1,0 +1,45 @@
+---
+import NavLinks from './NavLinks.astro';
+---
+<header class="site-header">
+  <div class="header-container desktop-header">
+    <a href="/" class="logo" aria-label="DDOS — početna strana"><img src="/ddoslogo.svg" alt="DDOS" width="486" height="120" /></a>
+    <nav aria-label="Glavna navigacija"><NavLinks /></nav>
+  </div>
+  <div class="mobile-header">
+    <div class="mobile-header-bar">
+      <a href="/" class="logo" aria-label="DDOS — početna strana"><img src="/ddoslogo.svg" alt="DDOS" width="260" height="64" /></a>
+      <button class="menu-toggle" type="button" aria-label="Otvori meni" aria-controls="mobile-navigation" aria-expanded="false" hidden>
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+    <nav id="mobile-navigation" aria-label="Mobilna navigacija"><NavLinks /></nav>
+  </div>
+</header>
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = document.querySelector<HTMLElement>('#mobile-navigation');
+  if (button && nav) {
+    button.hidden = false;
+    nav.dataset.ready = 'true';
+    const setOpen = (open: boolean) => {
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Zatvori meni' : 'Otvori meni');
+      nav.dataset.open = String(open);
+    };
+    button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && button.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        button.focus();
+      }
+    });
+    document.addEventListener('click', (event) => {
+      if (event.target instanceof Node && !nav.contains(event.target) && !button.contains(event.target)) setOpen(false);
+    });
+    nav.addEventListener('click', (event) => {
+      if (event.target instanceof Element && event.target.closest('a')) setOpen(false);
+    });
+    matchMedia('(max-width: 1100px)').addEventListener('change', () => setOpen(false));
+  }
+</script>

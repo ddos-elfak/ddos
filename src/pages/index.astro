@@ -1,179 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import LatestInstagram from '../components/LatestInstagram.astro';
 ---
-
 <Layout title="Početna">
-	<div class="home-container">
-		<section class="hero">
-			<h1>Dobrodošli u DDOS</h1>
-			<p class="subtitle">Demokratski Delagirana Organizacija Studenata</p>
-			<p class="description">
-				Upoznajte se sa našom misijom, aktivnostima i zajednicom. Budite deo nečeg većeg!
-			</p>
-			<a href="/uclani-se" class="cta-button">Pridruži nam se</a>
-		<div class="social-row">
-			<a href="https://www.instagram.com/ddos_elfak/" target="_blank" rel="noreferrer" class="social-link" aria-label="Instagram">
-				<img src="/instagram-svgrepo-com.svg" alt="Instagram" />
-			</a>
-			<a href="https://discord.gg/gdHRj2TM5" target="_blank" rel="noreferrer" class="social-link" aria-label="Discord">
-				<img src="/discord-icon.svg" alt="Discord" />
-			</a>
-			<a href="https://wa.me/" target="_blank" rel="noreferrer" class="social-link" aria-label="WhatsApp">
-				<img src="/whatsapp-svgrepo-com.svg" alt="WhatsApp" />
-			</a>
-		</div>
-	</section>
-	</div>
-		<div class="tekst-container">
-		<section class="tekst">
-			<h1 style="text-align: center;">O NAMA</h1>
-			
-			<p class="description">
-				Većim delom svoga toka гека Drina protiče kroz tesne gudure između strmih planina ili kroz duboke kanjone okomito odsečenih obala. Samo na nekoliko mesta rečnog toka njene se obale proširuju u otvorene doline i stvaraju, bilo na jednoj bilo na obe strane reke, župne, delimično ravne, delimično talasaste predele, podesne za obrađivanje i naselja. Takvo jedno proširenje nastaje i ovde, kod Višegrada, na mestu gde Drina izbija u naglom zavoju iz dubokog i uskog tesnaca koji stvaraju Butkove Stijene i Uzavničke planine. Zaokret koji tu pravi Drina neobično je oštar a planine sa obe strane tako su strme i toliko ublizu da izgledaju kao zatvoren masiv iz koga reka izvire pravo, kao iz mrkog zida. Ali tu se planine odjednom razmiču u nepravilan amfiteatar čiji promer na najširem mestu nije veći od petnaestak kilometara vazdušne linije.
-
-Na tom mestu gde Drina izbija celom težinom svoje vodene mase, zelene i zapenjene, iz prividno zatvorenog sklopa crnih i strmih planina, stoji veliki, skladno srezani most od kamena, sa jedanaest lukova širokog raspona. Od tog mosta, kao od osnovice, širi se lepezasto cela valovita dolina, sa višegradskom kasabom i njenom okolinom, sa zaseocima poleglim u prevoje brežuljaka, prekrivena njivama, ispašama i šljivicima, izukrštana međama i plotovima i poškropljena šumarcima i retkim skupovima crnogorice. Tako, posmatrano sa dna vidika, izgleda kao da iz širokih lukova belog mosta teče i razliva se ne samo zelena Drina, nego i ceo taj župni i pitomi prostor, sa svim što je na njemu i južnim nebom nad njim.
-			</p>
-           
-            
-			
-		</section>
-
-		
-	</div>
-
-	<style>
-		.home-container {
-			display: flex;
-			flex-direction: column;
-			gap: 60px;
-		}
-
-		.hero {
-			text-align: center;
-			padding: 60px 20px;
-			background-color:#c6ff81;
-			color:#0b1544;
-			border-radius: 10px;
-			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-		}
-
-		.hero h1 {
-			font-size: 48px;
-			margin-bottom: 10px;
-			font-weight: bold;
-		}
-
-		.subtitle {
-			font-size: 24px;
-			margin-bottom: 20px;
-			opacity: 0.95;
-		}
-
-		.description {
-			font-size: 18px;
-			margin-bottom: 30px;
-			line-height: 1.6;
-			max-width: 600px;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		.cta-button {
-			display: inline-block;
-			padding: 15px 40px;
-			background-color: white;
-			color: #5a1b6d;
-			text-decoration: none;
-			border-radius: 5px;
-			font-weight: bold;
-			font-size: 16px;
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-		}
-
-		.cta-button:hover {
-			transform: translateY(-3px);
-			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-		}
-
-		.highlights {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-			gap: 30px;
-			padding: 0 20px;
-		}
-
-		.highlight-card {
-			background: white;
-			padding: 30px;
-			border-radius: 10px;
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-			border-left: 5px solid #5a1b6d;
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
-		}
-
-		.highlight-card:hover {
-			transform: translateY(-5px);
-			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-		}
-
-		.social-row {
-			display: flex;
-			justify-content: center;
-			gap: 16px;
-			margin-top: 20px;
-		}
-
-		.social-link {
-			display: inline-flex;
-			width: 48px;
-			height: 48px;
-			align-items: center;
-			justify-content: center;
-			border-radius: 50%;
-			background: rgba(255, 255, 255, 0.95);
-			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
-			transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-			text-decoration: none;
-			color: #0b1544;
-		}
-
-		.social-link:hover {
-			transform: translateY(-3px);
-			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
-			background: white;
-		}
-
-		.social-link img {
-			width: 24px;
-			height: 24px;
-			object-fit: contain;
-		}
-
-		.highlight-card h2 {
-			color: #5a1b6d;
-			margin-bottom: 15px;
-			font-size: 22px;
-		}
-
-		.highlight-card p {
-			color: #666;
-			line-height: 1.6;
-			font-size: 16px;
-		}
-
-		@media (max-width: 768px) {
-			.hero h1 {
-				font-size: 36px;
-			}
-
-			.subtitle {
-				font-size: 18px;
-			}
-
-			.hero {
-				padding: 40px 20px;
-			}
-		}
-	</style>
+  <div class="home-container">
+    <section class="hero" aria-labelledby="welcome-title">
+      <h1 id="welcome-title">Dobrodošli u DDOS</h1>
+      <p class="subtitle">Demokratski delegirana organizacija studenata</p>
+      <p class="description">Upoznajte se sa našom misijom, aktivnostima i zajednicom. Budite deo nečeg većeg!</p>
+      <a href="/uclani-se" class="cta-button">Pridruži nam se</a>
+      <SocialLinks />
+    </section>
+  </div>
+  <div class="tekst-container">
+    <section class="tekst" aria-labelledby="about-title">
+      <h2 id="about-title" class="centered-heading">O NAMA</h2>
+      <p class="description">DDOS je Demokratski delegirana organizacija studenata na Elektronskom fakultetu. Ovaj sajt je mesto za informacije o organizaciji, novosti i najave događaja namenjenih studentima.</p>
+      <p class="description">Upoznaj našu zajednicu i saznaj kako da nam se pridružiš. <a href="/o-nama">Više o nama</a></p>
+    </section>
+  </div>
+  <div class="home-instagram"><LatestInstagram /></div>
 </Layout>
+<style>
+  #about-title { font-size: 32px; line-height: normal; margin-bottom: 0; }
+  .home-instagram { margin-top: 60px; }
+  @media (max-width: 768px) { .home-instagram { margin-top: 36px; } }
+</style>

@@ -1,0 +1,18 @@
+{
+  "name": "ddos-studio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "login": "sanity login",
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "schema": "sanity schema extract --path schema.json"
+  },
+  "dependencies": {
+    "sanity": "6.21.0",
+    "react": "^19.2.2",
+    "react-dom": "^19.2.2",
+    "styled-components": "^6.1.15"
+  }
+}

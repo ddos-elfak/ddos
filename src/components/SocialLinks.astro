@@ -1,0 +1,21 @@
+---
+import { site } from '../config/site';
+const links = [
+  { label: 'Instagram', href: site.instagramUrl, icon: '/instagram-svgrepo-com.svg' },
+  { label: 'Discord', href: site.discordUrl, icon: '/discord-icon.svg' },
+  { label: 'WhatsApp', href: site.whatsappUrl, icon: '/whatsapp-svgrepo-com.svg' },
+].filter(({ href }) => href);
+---
+<div class="social-row" aria-label="Društvene mreže">
+  {links.map(({ label, href, icon }) => (
+    <a href={href} target="_blank" rel="noopener noreferrer" class="social-link" aria-label={label + ' (otvara se u novoj kartici)'}>
+      <img src={icon} alt="" width="24" height="24" />
+    </a>
+  ))}
+</div>
+<style>
+  .social-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 20px; }
+  .social-link { display: inline-flex; width: 48px; height: 48px; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12); transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; text-decoration: none; color: #0b1544; }
+  .social-link:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18); background: white; }
+  .social-link img { width: 24px; height: 24px; object-fit: contain; }
+</style>

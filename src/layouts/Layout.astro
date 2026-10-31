@@ -1,189 +1,33 @@
 ---
-interface Props {
-  title: string;
-}
-
-const { title } = Astro.props;
+import Header from '../components/Header.astro';
+import { site } from '../config/site';
+import '../styles/global.css';
+interface Props { title: string; description?: string; }
+const { title, description = site.description } = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
 ---
-
 <!doctype html>
-<html lang="sr">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title} | DDOS</title>
-		<style is:global>
-			* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-			}
-
-			body {
-				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-				background-color: #4a4a86;
-				color: #333;
-			}
-
-			header {
-				background-color:#0b1544;
-				padding: 20px 0;
-				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-				position: sticky;
-				top: 0;
-				z-index: 1000;
-			}
-			.home-container {
-			display: flex;
-			flex-direction: column;
-			gap: 60px;
-		}
-
-		.hero {
-			text-align: center;
-			padding: 60px 20px;
-			background-color:#c6ff81;
-			color:#0b1544;
-			border-radius: 10px;
-			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-		}
-		.tekst-container {
-			display: flex;
-			flex-direction: column;
-			gap: 60px;
-			width: 100%;
-			max-width: 1200px;
-			margin: 60px auto 0;
-			padding: 0 20px;
-			align-items: flex-start;
-		}
-
-		.tekst {
-			width: 100%;
-			text-align: left;
-			padding: 60px 20px;
-			background-color:#ffffff;
-			color:#0b1544;
-			border-radius: 10px;
-			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-		}
-
-.header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    flex-wrap: nowrap; /* bitno */
-}
-
-.logo img {
-    height: 120px; 
-    width: auto;
-    align-items: left;
-}
-
-nav {
-    margin-left: auto;
-}
-
-nav ul {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: nowrap;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-			nav a {
-				display: block;
-				padding: 15px 18px;
-				color: #c6ff81;
-				text-decoration: none;
-				transition: background-color 0.3s ease;
-				font-weight: 500;
-				font-size: 15px;
-				text-transform: capitalize;
-			}
-
-			nav a:hover {
-				background-color: rgba(255, 255, 255, 0.2);
-			}
-
-			nav a.active {
-				background-color: rgba(255, 255, 255, 0.3);
-				border-bottom: 3px solid white;
-			}
-
-			main {
-				max-width: 1200px;
-				margin: 40px auto;
-				padding: 0 20px;
-				min-height: calc(100vh - 200px);
-			}
-
-			footer {
-				background-color: #333;
-				color: white;
-				text-align: center;
-				padding: 30px 20px;
-				margin-top: 60px;
-			}
-
-			@media (max-width: 768px) {
-				.header-container {
-					flex-direction: column;
-					align-items: flex-start;
-				}
-
-				nav ul {
-					width: 100%;
-					flex-direction: column;
-				}
-
-				nav a {
-					padding: 12px 15px;
-					border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<header>
-			<div class="header-container">
-				<a href="/" class="logo">
-					<img src="/ddoslogo.svg" alt="DDOS Logo" />
-				</a>
-				<nav>
-					<ul>
-						<!-- <li><a href="/">Početna</a></li> -->
-						<li><a href="/o-nama">O&nbsp;nama</a></li>
-						<li><a href="/novosti">Novosti</a></li>
-						<li><a href="/novosti">Kalendar</a></li>
-						<!-- <li><a href="/aktivnosti">Aktivnosti</a></li> -->
-						<li><a href="/galerija">Galerija</a></li>
-						<li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeuOpcBl8u6rGZCe7uf23jb9ra0dnMeKiYeKqxeVYRTJDhNFg/viewform?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPNTY3MDY3MzQzMzUyNDI3AAGn73mLIyRd1RdDKKL3H9PSK1yRzjInZibrJUwZFWZtIXf15_xgMlyqWj0xJxI_aem_RSgqYuewwEqXHHP41iqwyQ" style="background-color: rgba(255, 255, 255, 0.15); margin-left: 10px; border-radius: 4px;">Pridruži nam se</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-
-		<main>
-			<slot />
-		</main>
-
-		<footer>
-			<p>&copy; 
-2026 Demokratski delegirana organizacija studenata. Sva prava zadržana.
-</p>
-		</footer>
-	</body>
+<html lang="sr-Latn">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/ddoslogo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b1544" />
+    <meta property="og:title" content={title + ' | DDOS'} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="sr_RS" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {canonical && <meta property="og:url" content={canonical} />}
+    <title>{title} | DDOS</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Preskoči na sadržaj</a>
+    <Header />
+    <main id="main-content" tabindex="-1"><slot /></main>
+    <footer class="site-footer">
+      <p>&copy; {new Date().getFullYear()} {site.name}. Sva prava zadržana.</p>
+    </footer>
+  </body>
 </html>

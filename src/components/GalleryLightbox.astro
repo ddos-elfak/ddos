@@ -1,0 +1,37 @@
+<dialog class="photo-dialog" aria-label="Uvećana fotografija" aria-describedby="photo-caption">
+  <button type="button" class="dialog-close" aria-label="Zatvori fotografiju" autofocus>×</button>
+  <figure><img alt="" /><figcaption id="photo-caption"></figcaption></figure>
+  <div class="photo-controls"><button type="button" data-photo-prev aria-label="Prethodna fotografija">←</button><span data-photo-count aria-live="polite"></span><button type="button" data-photo-next aria-label="Sledeća fotografija">→</button></div>
+</dialog>
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('.photo-dialog');
+  if (dialog) {
+    let photos: HTMLAnchorElement[] = []; let index = 0; let trigger: HTMLAnchorElement | null = null;
+    const show = () => {
+      const current = photos[index]; if (!current) return;
+      const image = dialog.querySelector('img')!;
+      image.src = current.href; image.alt = current.querySelector('img')?.alt || '';
+      dialog.querySelector('figcaption')!.textContent = current.dataset.caption || '';
+      dialog.querySelector('[data-photo-count]')!.textContent = (index + 1) + ' / ' + photos.length;
+      dialog.querySelector<HTMLButtonElement>('[data-photo-prev]')!.disabled = index === 0;
+      dialog.querySelector<HTMLButtonElement>('[data-photo-next]')!.disabled = index === photos.length - 1;
+    };
+    document.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element) || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      const link = event.target.closest<HTMLAnchorElement>('[data-gallery-image]');
+      if (!link) return;
+      event.preventDefault(); trigger = link;
+      photos = [...document.querySelectorAll<HTMLAnchorElement>('[data-gallery-image]')].filter((photo) => photo.dataset.album === link.dataset.album);
+      index = photos.indexOf(link); show(); dialog.showModal();
+    });
+    dialog.querySelector('.dialog-close')!.addEventListener('click', () => dialog.close());
+    dialog.querySelector('[data-photo-prev]')!.addEventListener('click', () => { index = Math.max(0, index - 1); show(); });
+    dialog.querySelector('[data-photo-next]')!.addEventListener('click', () => { index = Math.min(photos.length - 1, index + 1); show(); });
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') { event.preventDefault(); index = Math.max(0, index - 1); show(); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); index = Math.min(photos.length - 1, index + 1); show(); }
+    });
+    dialog.addEventListener('click', (event) => { const rect = dialog.getBoundingClientRect(); if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close(); });
+    dialog.addEventListener('close', () => trigger?.focus());
+  }
+</script>

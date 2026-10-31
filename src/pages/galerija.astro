@@ -1,7 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContentFeed from '../components/ContentFeed.astro';
+import GalleryLightbox from '../components/GalleryLightbox.astro';
+import { gallery } from '../data/content';
 ---
-
-<Layout title="Galerija">
-	
+<Layout title="Galerija" description="Albumi i fotografije sa okupljanja i događaja DDOS studentske organizacije na Elektronskom fakultetu.">
+  <section class="tekst">
+    <h1 class="centered-heading">Galerija</h1>
+    <p class="description centered-heading">Fotografije sa naših događaja, okupljene po albumima.</p>
+    <ContentFeed kind="album" items={gallery} emptyTitle="Fotografije uskoro" emptyMessage="Ovde će biti objavljeni albumi sa događaja i okupljanja DDOS zajednice." />
+  </section>
+  <GalleryLightbox />
 </Layout>

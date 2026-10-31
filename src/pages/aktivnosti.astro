@@ -1,9 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-
+import ContentFeed from '../components/ContentFeed.astro';
+import { events } from '../data/content';
 ---
-
 <Layout title="Aktivnosti">
-
+  <section class="tekst">
+    <h1 class="centered-heading">Aktivnosti</h1>
+    <p class="description centered-heading">Događaji i okupljanja naše zajednice. Termine možeš da pratiš i u <a href="/kalendar">kalendaru</a>.</p>
+    <ContentFeed kind="event" items={[...events].sort((a, b) => b.date.localeCompare(a.date))} emptyTitle="Još nema najavljenih aktivnosti" emptyMessage="Informacije o novim događajima i učešću biće objavljene ovde." />
+  </section>
 </Layout>

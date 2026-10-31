@@ -1,0 +1,49 @@
+---
+import snapshot from '../../public/data/external-news.json';
+import { renderNewsCard } from '../lib/news-feed.mjs';
+import InstagramEmbed from './InstagramEmbed.astro';
+const sources = [
+  { id: 'instagram', title: 'DDOS na Instagramu', url: 'https://www.instagram.com/ddos_elfak/' },
+  { id: 'elfak', title: 'Elektronski fakultet', url: 'https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja' },
+  { id: 'sip', title: 'SIP: studentska obaveštenja', url: 'https://sip.elfak.ni.ac.rs/' },
+];
+---
+{sources.map((source) => {
+  const saved = snapshot.sources.find((entry) => entry.id === source.id);
+  return <section class="tekst source-section" data-source={source.id} aria-labelledby={'source-' + source.id}>
+    <div class="source-heading"><div><h2 id={'source-' + source.id}>{source.title}</h2><a class="source-site" href={source.url} target="_blank" rel="noopener noreferrer">{source.id === 'instagram' ? '@ddos_elfak' : new URL(source.url).hostname} ↗</a></div>
+      <div class="source-arrows"><button type="button" data-scroll="-1" aria-label={'Prethodne objave: ' + source.title}>←</button><button type="button" data-scroll="1" aria-label={'Sledeće objave: ' + source.title}>→</button></div>
+    </div>
+    <div class="source-track" tabindex="0" role="region" aria-label={'Objave: ' + source.title} set:html={(saved?.items || []).map((item) => renderNewsCard(item, source)).join('')} />
+    {source.id === 'instagram' && <div class="source-instagram-native" data-source-native hidden={Boolean(saved?.items.length)}><InstagramEmbed /></div>}
+    <p class="source-empty" hidden={Boolean(saved?.items.length) || source.id === 'instagram'}>Ovde još nema objava za prikaz. <a href={source.url} target="_blank" rel="noopener noreferrer">Poseti izvor obaveštenja ↗</a></p>
+  </section>;
+})}
+<script>
+  import { renderNewsCard } from '../lib/news-feed.mjs';
+  import { loadNewsSnapshot } from '../lib/news-snapshot.mjs';
+  const sections = [...document.querySelectorAll<HTMLElement>('[data-source]')];
+  for (const section of sections) {
+    const track = section.querySelector<HTMLElement>('.source-track')!;
+    const buttons = section.querySelectorAll<HTMLButtonElement>('[data-scroll]');
+    const update = () => {
+      section.querySelector<HTMLElement>('.source-arrows')!.hidden = track.scrollWidth <= track.clientWidth + 1;
+      buttons.forEach((button) => { button.disabled = Number(button.dataset.scroll) < 0 ? track.scrollLeft <= 1 : track.scrollLeft + track.clientWidth >= track.scrollWidth - 1; });
+    };
+    buttons.forEach((button) => button.addEventListener('click', () => track.scrollBy({ left: Number(button.dataset.scroll) * track.clientWidth * 0.85, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })));
+    track.addEventListener('scroll', update, { passive: true });
+    new ResizeObserver(update).observe(track); update();
+  }
+  loadNewsSnapshot(fetch, import.meta.env.PROD).then((data) => {
+    for (const section of sections) {
+      const source = data.sources?.find((item: any) => item.id === section.dataset.source);
+      if (!source) continue;
+      const track = section.querySelector<HTMLElement>('.source-track')!;
+      track.innerHTML = source.items.map((item: any) => renderNewsCard(item, source)).join('');
+      section.querySelector<HTMLElement>('.source-empty')!.hidden = Boolean(source.items.length) || source.id === 'instagram';
+      const native = section.querySelector<HTMLElement>('[data-source-native]');
+      if (native) native.hidden = Boolean(source.items.length);
+      track.dispatchEvent(new Event('scroll'));
+    }
+  }).catch(() => { /* Sačuvane objave i linkovi ka izvorima ostaju vidljivi. */ });
+</script>

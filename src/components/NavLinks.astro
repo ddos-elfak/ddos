@@ -1,0 +1,10 @@
+---
+import { navigation } from '../config/site';
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const links = [...navigation, { href: '/uclani-se', label: 'Pridruži nam se' }];
+---
+<ul>
+  {links.map(({ href, label }) => (
+    <li><a href={href} class:list={{ active: currentPath === href, 'join-link': href === '/uclani-se' }} aria-current={currentPath === href ? 'page' : undefined}>{label}</a></li>
+  ))}
+</ul>

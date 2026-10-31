@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { events } from '../data/content';
+import { belgradeToday, monthCells, monthLabel, formatDate } from '../utils/calendar';
+import { renderEntry, entryId } from '../lib/render-content.mjs';
+import { cmsConfigured, fetchEntries } from '../lib/cms.mjs';
+import { calendarEvents } from '../utils/events.mjs';
+const today = belgradeToday();
+const year = Number(today.slice(0, 4));
+const month = Number(today.slice(5, 7)) - 1;
+let initialEvents = [...events];
+if (cmsConfigured) {
+  try {
+    const cells = monthCells(year, month);
+    initialEvents = (await fetchEntries('event', { from: today, to: cells.at(-1)!.date, limit: 100 })).items;
+  } catch { /* Lokalni sadržaj ostaje dostupan. */ }
+}
+const sortedEvents = calendarEvents(initialEvents, today).sort((a, b) => (a.date + (a.time || '')).localeCompare(b.date + (b.time || '')));
+const weekdays = [['Pon', 'Ponedeljak'], ['Uto', 'Utorak'], ['Sre', 'Sreda'], ['Čet', 'Četvrtak'], ['Pet', 'Petak'], ['Sub', 'Subota'], ['Ned', 'Nedelja']];
+---
+<Layout title="Kalendar" description="Kalendar događaja DDOS organizacije. Pregled termina, lokacija i informacija o studentskim okupljanjima.">
+  <section class="tekst">
+    <h1 class="centered-heading">Kalendar</h1>
+    <p class="description centered-heading">Pregled događaja i okupljanja naše zajednice.</p>
+    <div class="calendar" data-events={JSON.stringify(sortedEvents)}>
+      <div class="calendar-toolbar">
+        <h2 id="calendar-month" aria-live="polite" aria-atomic="true">{monthLabel(year, month)}</h2>
+        <div class="calendar-controls" hidden>
+          <button type="button" data-direction="-1" aria-label="Prethodni mesec">‹</button>
+          <button type="button" data-today>Danas</button>
+          <button type="button" data-direction="1" aria-label="Sledeći mesec">›</button>
+        </div>
+      </div>
+      <table aria-labelledby="calendar-month">
+        <thead><tr>{weekdays.map(([short, full]) => <th scope="col"><abbr title={full}>{short}</abbr></th>)}</tr></thead>
+        <tbody id="calendar-days">
+          {Array.from({ length: monthCells(year, month).length / 7 }, (_, row) => (
+            <tr>{monthCells(year, month).slice(row * 7, row * 7 + 7).map((cell) => {
+              const dayEvents = sortedEvents.filter((event) => event.date === cell.date);
+              return <td class:list={{ 'outside-month': !cell.inMonth, today: cell.date === today }}>
+                <time datetime={cell.date} aria-current={cell.date === today ? 'date' : undefined}>{cell.day}</time>
+                {dayEvents.length > 0 && <a class="event-marker" href={'#' + entryId(dayEvents[0], 'event')} aria-label={formatDate(cell.date) + ': ' + dayEvents.map((event) => event.title).join(', ')}>{dayEvents.length}<span class="sr-only"> događaja</span></a>}
+              </td>;
+            })}</tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="calendar-note">Datumi i vremena su prikazani po vremenu u Srbiji.</p>
+      <p id="calendar-status" class="content-note" role="status" aria-live="polite"></p>
+    </div>
+    <div class="event-list">
+      <h2>Događaji</h2>
+      <p id="no-events" role="status" hidden>Nema objavljenih događaja za ovaj mesec.</p>
+      <div id="calendar-event-list" class="content-list" set:html={sortedEvents.map((event) => renderEntry(event, 'event')).join('')} />
+    </div>
+    <noscript><p class="calendar-note">Za promenu meseca uključi JavaScript. Svi objavljeni događaji navedeni su ispod kalendara.</p></noscript>
+  </section>
+</Layout>
+<script>import '../scripts/calendar';</script>
+<style is:global>
+  .calendar { max-width: 720px; margin: 32px auto; }
+  .calendar-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+  .calendar-toolbar h2 { margin: 0; text-transform: capitalize; }
+  .calendar-controls { display: flex; gap: 8px; }
+  .calendar-controls button { min-width: 44px; min-height: 44px; padding: 6px 12px; color: #0b1544; background: #c6ff81; border: 1px solid #0b1544; border-radius: 4px; }
+  .calendar table { width: 100%; table-layout: fixed; border-collapse: collapse; }
+  .calendar th { padding: 8px 0; background: #0b1544; color: #c6ff81; }
+  .calendar abbr { text-decoration: none; }
+  .calendar td { border: 1px solid rgba(11, 21, 68, 0.2); height: 76px; padding: 8px; vertical-align: top; }
+  .calendar td.today { background: #c6ff81; box-shadow: inset 0 0 0 2px #0b1544; }
+  .calendar td.outside-month time { opacity: 0.5; }
+  .calendar .event-marker { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; margin-top: 4px; background: #0b1544; color: #c6ff81; border-radius: 50%; text-decoration: none; font-size: 14px; }
+  .calendar-note { font-size: 14px; margin-top: 16px; }
+  .event-list { max-width: 720px; margin: 32px auto 0; }
+  @media (max-width: 480px) {
+    .calendar td { padding: 4px; height: 72px; font-size: 14px; }
+    .calendar th { font-size: 12px; }
+    .calendar .event-marker { width: 24px; height: 24px; margin-inline: auto; }
+  }
+</style>

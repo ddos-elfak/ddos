@@ -1,0 +1,10 @@
+---
+import { site } from '../config/site';
+interface Props { title: string; message: string; }
+const { title, message } = Astro.props;
+---
+<div class="empty-state">
+  <h2>{title}</h2>
+  <p>{message}</p>
+  <p>U međuvremenu, prati nas na <a href={site.instagramUrl} target="_blank" rel="noopener noreferrer">Instagramu (nova kartica)</a>.</p>
+</div>

@@ -1,0 +1,148 @@
+{
+  "sources": [
+    {
+      "id": "elfak",
+      "title": "Elektronski fakultet",
+      "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja",
+      "feedUrl": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja?format=feed&type=rss",
+      "checkedAt": "2026-10-31T18:57:58.409Z",
+      "items": [
+        {
+          "title": "Саставни део главне поставке у Музеју Николе Тесле 3Д анимације развијене на Електронском факултету",
+          "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja/deo-postavke-muzeja-nikole-tesle-3d-animacije-elfak",
+          "date": "2026-10-26"
+        },
+        {
+          "title": "Студенткиње Електронског факултета на MOGIS хакатону!",
+          "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja/studentkinje-elektronskog-fakulteta-na-mogis-hakatonu",
+          "date": "2026-10-26"
+        },
+        {
+          "title": "Конкурс Универзитета у Нишу за одлазну мобилност студената и наставника у оквиру програма ЕRASMUS+ КА171 (International Credit Mobility - ICM)",
+          "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja/konkurs-univerziteta-u-nisu-za-odlaznu-mobilnost-studenata-i-nastavnika-erasmus-ka171-international-credit-mobility-icm",
+          "date": "2026-10-26"
+        },
+        {
+          "title": "Електронском факултету Плакета Техничког факултета у Битољу",
+          "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja/elektronskom-fakultetu-plaketa-tehnickog-fakulteta-u-bitolju",
+          "date": "2026-10-21"
+        },
+        {
+          "title": "ПЕС 2026",
+          "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja/pes-2026",
+          "date": "2026-10-16"
+        },
+        {
+          "title": "Додела златних индекса 2026",
+          "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja/dodela-zlatnih-indeksa-2026",
+          "date": "2026-10-14"
+        },
+        {
+          "title": "Конкурс за упис на докторске академске студије у школској 2026/2027. години",
+          "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja/konkurs-upis-das-1-rok-2026-27",
+          "date": "2026-10-09"
+        },
+        {
+          "title": "Бруцоши, добродошли на Електронски факултет!",
+          "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja/brucosi-dobrodosli-na-elektronski-fakultet-2026",
+          "date": "2026-10-07"
+        },
+        {
+          "title": "Почетак пројекта STE(A)M-POWER!",
+          "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja/pocetak-projekta-ste-a-m-power",
+          "date": "2026-10-05"
+        }
+      ]
+    },
+    {
+      "id": "sip",
+      "title": "SIP: studentska obaveštenja",
+      "url": "https://sip.elfak.ni.ac.rs/",
+      "checkedAt": "2026-10-31T18:57:59.023Z",
+      "items": [
+        {
+          "title": "Распоред часова за јесењи семестар Мастер академских студија",
+          "url": "https://sip.elfak.ni.ac.rs/article/mas/raspored-casova-jesen-mas-2026-2027",
+          "dateLabel": "Пет, 30. Окт, 2026. у 18:46"
+        },
+        {
+          "title": "Анкета Српског нуклеарног друштва „Глас младих”",
+          "url": "https://sip.elfak.ni.ac.rs/article/ostalo/anketa-glas-mladih-2026",
+          "dateLabel": "Чет, 29. Окт, 2026. у 13:34"
+        },
+        {
+          "title": "Листе изборних предмета на Докторским академским студијама",
+          "url": "https://sip.elfak.ni.ac.rs/article/obrasci/liste-izbornih-predmeta-das-2026-2027",
+          "dateLabel": "Сре, 28. Окт, 2026. у 11:42"
+        },
+        {
+          "title": "Распореди испита у школској 2026/2027. години",
+          "url": "https://sip.elfak.ni.ac.rs/article/polaganje-ispita/rasporedi-ispita-2026-2027",
+          "dateLabel": "Уто, 27. Окт, 2026. у 13:48"
+        },
+        {
+          "title": "Стипендија компаније ХК \"Крушик\"",
+          "url": "https://sip.elfak.ni.ac.rs/article/konkursi/stipendije-krusik-2026-2027",
+          "dateLabel": "Пон, 26. Окт, 2026. у 11:21"
+        },
+        {
+          "title": "Конкурс Универзитета у Нишу за одлазну мобилност студената и наставника у оквиру програма ЕRASMUS+ КА171 (International Credit Mobility - ICM)",
+          "url": "https://sip.elfak.ni.ac.rs/article/konkursi/konkurs-univerziteta-u-nisu-za-odlaznu-mobilnost-studenata-i-nastavnika-erasmus-ka171-international-credit-mobility-icm",
+          "dateLabel": "Пон, 26. Окт, 2026. у 10:50"
+        },
+        {
+          "title": "Стипендија компаније ЕМС АД Београд",
+          "url": "https://sip.elfak.ni.ac.rs/article/konkursi/stipendija-ems-2026",
+          "dateLabel": "Пет, 23. Окт, 2026. у 14:20"
+        },
+        {
+          "title": "Продужење статуса на докторским академским студијама у школској 2026/2027. години",
+          "url": "https://sip.elfak.ni.ac.rs/article/das/produzenje-statusa-das-2026-27",
+          "dateLabel": "Чет, 22. Окт, 2026. у 11:06"
+        },
+        {
+          "title": "Измене у распореду часова за јесењи семестар ОАС школске 2026/2027. године",
+          "url": "https://sip.elfak.ni.ac.rs/article/nastava/izmene-raspored-casova-oas-jesen-2026-2027",
+          "dateLabel": "Чет, 22. Окт, 2026. у 11:02"
+        },
+        {
+          "title": "Упис студената у II и III годину докторских академских студија у школској 2026/2027. години",
+          "url": "https://sip.elfak.ni.ac.rs/article/das/upis-u-drugu-i-trecu-godinu-das-2026-27",
+          "dateLabel": "Чет, 22. Окт, 2026. у 10:42"
+        },
+        {
+          "title": "Поновни упис студената у III годину докторских академских студија у школској 2026/2027. години",
+          "url": "https://sip.elfak.ni.ac.rs/article/das/ponovni-upis-u-trecu-godinu-dr-studija-2026-2027",
+          "dateLabel": "Чет, 22. Окт, 2026. у 9:42"
+        },
+        {
+          "title": "Дан отворених врата посвећен науци и истраживањима на Електронском факултету",
+          "url": "https://sip.elfak.ni.ac.rs/article/ostalo/dan-otvorenih-vrata-2026",
+          "dateLabel": "Чет, 15. Окт, 2026. у 14:49"
+        },
+        {
+          "title": "Плаћена АИ пракса у компанији КупујемПродајем",
+          "url": "https://sip.elfak.ni.ac.rs/article/konkursi/ai-praksa-kupujemprodajem",
+          "dateLabel": "Чет, 15. Окт, 2026. у 14:34"
+        },
+        {
+          "title": "Листе изборних предмета на Мастер академским студијама",
+          "url": "https://sip.elfak.ni.ac.rs/article/obrasci/liste-izbornih-predmeta-mas-2026-2027",
+          "dateLabel": "Уто, 13. Окт, 2026. у 11:30"
+        },
+        {
+          "title": "AI Inovaciono takmičenje za studente-Johnson Electric",
+          "url": "https://sip.elfak.ni.ac.rs/article/konkursi/ai-inovaciono-takmicenje",
+          "dateLabel": "Пон, 12. Окт, 2026. у 12:07"
+        }
+      ]
+    },
+    {
+      "id": "instagram",
+      "title": "DDOS na Instagramu",
+      "url": "https://www.instagram.com/ddos_elfak/",
+      "checkedAt": "2026-10-31T18:57:59.184Z",
+      "items": []
+    }
+  ]
+}

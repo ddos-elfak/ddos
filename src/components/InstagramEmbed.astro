@@ -1,0 +1,22 @@
+<div class="instagram-native">
+  <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/ddos_elfak/" data-instgrm-version="14">
+    <a class="instagram-profile-card" href="https://www.instagram.com/ddos_elfak/" target="_blank" rel="noopener noreferrer"><img src="/instagram-svgrepo-com.svg" alt="" width="64" height="64" /><span>@ddos_elfak</span><span>Pogledaj najnovije objave na Instagramu ↗</span></a>
+  </blockquote>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('.instagram-native').forEach((container) => {
+    const label = () => { const frame = container.querySelector('iframe'); if (frame) frame.title = 'Najnovije objave @ddos_elfak na Instagramu'; return Boolean(frame); };
+    if (!label()) { const observer = new MutationObserver(() => { if (label()) observer.disconnect(); }); observer.observe(container, { childList: true, subtree: true }); }
+  });
+  const instagramWindow = window as typeof window & { instgrm?: { Embeds: { process: () => void } } };
+  if (instagramWindow.instgrm) instagramWindow.instgrm.Embeds.process();
+  else {
+    let script = document.querySelector<HTMLScriptElement>('script[data-instagram-script]');
+    if (!script) {
+      script = document.createElement('script');
+      script.src = 'https://www.instagram.com/embed.js'; script.async = true; script.dataset.instagramScript = 'true';
+      document.body.append(script);
+    }
+    script.addEventListener('load', () => instagramWindow.instgrm?.Embeds.process(), { once: true });
+  }
+</script>

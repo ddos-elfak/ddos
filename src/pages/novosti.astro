@@ -1,9 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-
+import ContentFeed from '../components/ContentFeed.astro';
+import { news } from '../data/content';
+import NewsSources from '../components/NewsSources.astro';
 ---
-
-<Layout title="Novosti">
-	
+<Layout title="Novosti" description="Najnovija obaveštenja i informacije DDOS organizacije na Elektronskom fakultetu.">
+  <section class="tekst news-page-intro">
+    <h1 class="centered-heading">Novosti</h1>
+    <p class="description centered-heading">Obaveštenja važna studentima sa fakulteta, SIP-a i iz naše zajednice.</p>
+  </section>
+  <div class="news-sources"><NewsSources /></div>
+  <section class="tekst ddos-news">
+    <h2 class="centered-heading">DDOS obaveštenja</h2>
+    <ContentFeed kind="news" items={[...news].sort((a, b) => b.date.localeCompare(a.date))} emptyTitle="Još nema objavljenih novosti" emptyMessage="Nova obaveštenja organizacije biće dostupna na ovoj stranici." />
+  </section>
 </Layout>
