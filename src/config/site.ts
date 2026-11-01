@@ -3,7 +3,7 @@ export const site = {
   description: 'DDOS — Demokratski delegirana organizacija studenata na Elektronskom fakultetu. Informacije, novosti, događaji i studentska zajednica.',
   joinUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeuOpcBl8u6rGZCe7uf23jb9ra0dnMeKiYeKqxeVYRTJDhNFg/viewform',
   instagramUrl: 'https://www.instagram.com/ddos_elfak/',
-  discordUrl: 'https://discord.gg/gdHRj2TM5',
+  discordUrl: 'https://discord.gg/WG3JRaXP7v',
   // Dodajte važeći pozivni link grupe da se prikaže WhatsApp ikonica.
   whatsappUrl: '',
 };
