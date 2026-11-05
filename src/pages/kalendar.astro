@@ -31,6 +31,21 @@ const weekdays = [['Pon', 'Ponedeljak'], ['Uto', 'Utorak'], ['Sre', 'Sreda'], ['
           <button type="button" data-direction="1" aria-label="Sledeći mesec">›</button>
         </div>
       </div>
+      <button id="exam-toggle" class="exam-toggle" type="button" aria-expanded="false" aria-controls="exam-controls">Prikaži ispite</button>
+      <form id="exam-controls" class="exam-controls" hidden>
+        <label for="exam-year">Godina studija</label>
+        <select id="exam-year" name="year">
+          <option value="1">1. godina</option>
+          <option value="2">2. godina</option>
+          <option value="3">3. godina</option>
+          <option value="4">4. godina</option>
+        </select>
+        <label for="exam-track">Smer</label>
+        <select id="exam-track" name="track" required>
+          <option value="">Izaberite smer</option>
+        </select>
+        <button type="submit">Prikaži izabrane ispite</button>
+      </form>
       <table aria-labelledby="calendar-month">
         <thead><tr>{weekdays.map(([short, full]) => <th scope="col"><abbr title={full}>{short}</abbr></th>)}</tr></thead>
         <tbody id="calendar-days">
@@ -53,7 +68,12 @@ const weekdays = [['Pon', 'Ponedeljak'], ['Uto', 'Utorak'], ['Sre', 'Sreda'], ['
       <p id="no-events" role="status" hidden>Nema objavljenih događaja za ovaj mesec.</p>
       <div id="calendar-event-list" class="content-list" set:html={sortedEvents.map((event) => renderEntry(event, 'event')).join('')} />
     </div>
-    <noscript><p class="calendar-note">Za promenu meseca uključi JavaScript. Svi objavljeni događaji navedeni su ispod kalendara.</p></noscript>
+    <div id="exam-list" class="event-list" hidden>
+      <h2 id="exam-list-heading">Ispiti</h2>
+      <p id="no-exams" role="status" hidden>Nema ispita za izabranu godinu i smer.</p>
+      <div id="calendar-exam-list" class="content-list"></div>
+    </div>
+    <noscript><p class="calendar-note">Za promenu meseca i prikaz ispita uključi JavaScript. Svi objavljeni događaji navedeni su ispod kalendara.</p></noscript>
   </section>
 </Layout>
 <script>import '../scripts/calendar';</script>
@@ -63,6 +83,9 @@ const weekdays = [['Pon', 'Ponedeljak'], ['Uto', 'Utorak'], ['Sre', 'Sreda'], ['
   .calendar-toolbar h2 { margin: 0; text-transform: capitalize; }
   .calendar-controls { display: flex; gap: 8px; }
   .calendar-controls button { min-width: 44px; min-height: 44px; padding: 6px 12px; color: #0b1544; background: #c6ff81; border: 1px solid #0b1544; border-radius: 4px; }
+  .exam-toggle, .exam-controls button { min-height: 44px; padding: 8px 16px; color: #0b1544; background: #c6ff81; border: 1px solid #0b1544; border-radius: 4px; }
+  .exam-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+  .exam-controls select { min-height: 44px; padding: 8px; color: #0b1544; background: white; border: 1px solid #0b1544; border-radius: 4px; }
   .calendar table { width: 100%; table-layout: fixed; border-collapse: collapse; }
   .calendar th { padding: 8px 0; background: #0b1544; color: #c6ff81; }
   .calendar abbr { text-decoration: none; }
@@ -70,6 +93,7 @@ const weekdays = [['Pon', 'Ponedeljak'], ['Uto', 'Utorak'], ['Sre', 'Sreda'], ['
   .calendar td.today { background: #c6ff81; box-shadow: inset 0 0 0 2px #0b1544; }
   .calendar td.outside-month time { opacity: 0.5; }
   .calendar .event-marker { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; margin-top: 4px; background: #0b1544; color: #c6ff81; border-radius: 50%; text-decoration: none; font-size: 14px; }
+  .calendar .exam-marker { background: #4a4a86; color: white; }
   .calendar-note { font-size: 14px; margin-top: 16px; }
   .event-list { max-width: 720px; margin: 32px auto 0; }
   @media (max-width: 480px) {
