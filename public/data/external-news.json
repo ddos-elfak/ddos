@@ -5,7 +5,7 @@
       "title": "Elektronski fakultet",
       "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja",
       "feedUrl": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja?format=feed&type=rss",
-      "checkedAt": "2026-11-10T12:46:33.222Z",
+      "checkedAt": "2026-11-11T00:42:36.482Z",
       "items": [
         {
           "title": "Наставници из Бора са партнерима на Ерасмус+ пројекту VRLEARN 360 посетили Електронски факултет",
@@ -58,8 +58,18 @@
       "id": "sip",
       "title": "SIP: studentska obaveštenja",
       "url": "https://sip.elfak.ni.ac.rs/",
-      "checkedAt": "2026-11-10T12:46:34.838Z",
+      "checkedAt": "2026-11-11T00:42:38.155Z",
       "items": [
+        {
+          "title": "Предлог за доделу награда и признања студентима поводом Дана Електронског факултета",
+          "url": "https://sip.elfak.ni.ac.rs/article/ostalo/predlog-nagrade-priznanja-studentima-2026",
+          "dateLabel": "Уто, 10. Нов, 2026. у 14:24"
+        },
+        {
+          "title": "Систематски преглед за студенте I и III године",
+          "url": "https://sip.elfak.ni.ac.rs/article/ostalo/sistematski-pregled-1-3-godina-2026",
+          "dateLabel": "Уто, 10. Нов, 2026. у 13:53"
+        },
         {
           "title": "Пријава за коришћење подршке кроз институт „Студент-ментор“ за школску 2026/2027. годину",
           "url": "https://sip.elfak.ni.ac.rs/article/ostalo/poziv-studentima-student-mentor",
@@ -124,16 +134,6 @@
           "title": "Измене у распореду часова за јесењи семестар ОАС школске 2026/2027. године",
           "url": "https://sip.elfak.ni.ac.rs/article/nastava/izmene-raspored-casova-oas-jesen-2026-2027",
           "dateLabel": "Чет, 22. Окт, 2026. у 11:02"
-        },
-        {
-          "title": "Упис студената у II и III годину докторских академских студија у школској 2026/2027. години",
-          "url": "https://sip.elfak.ni.ac.rs/article/das/upis-u-drugu-i-trecu-godinu-das-2026-27",
-          "dateLabel": "Чет, 22. Окт, 2026. у 10:42"
-        },
-        {
-          "title": "Поновни упис студената у III годину докторских академских студија у школској 2026/2027. години",
-          "url": "https://sip.elfak.ni.ac.rs/article/das/ponovni-upis-u-trecu-godinu-dr-studija-2026-2027",
-          "dateLabel": "Чет, 22. Окт, 2026. у 9:42"
         }
       ]
     },
@@ -141,7 +141,7 @@
       "id": "instagram",
       "title": "DDOS na Instagramu",
       "url": "https://www.instagram.com/ddos_elfak/",
-      "checkedAt": "2026-11-10T12:46:35.272Z",
+      "checkedAt": "2026-11-11T00:42:38.546Z",
       "items": []
     }
   ]
