@@ -5,8 +5,13 @@
       "title": "Elektronski fakultet",
       "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja",
       "feedUrl": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja?format=feed&type=rss",
-      "checkedAt": "2026-11-13T12:21:22.637Z",
+      "checkedAt": "2026-11-13T19:53:20.523Z",
       "items": [
+        {
+          "title": "Свечана додела диплома",
+          "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja/svecana-dodela-diploma-novembar-26",
+          "date": "2030-06-05"
+        },
         {
           "title": "Наставници из Бора са партнерима на Ерасмус+ пројекту VRLEARN 360 посетили Електронски факултет",
           "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja/nastavnici-iz-bora-sa-partnerima-na-erasmus-projektu-posetili-elfak",
@@ -46,11 +51,6 @@
           "title": "Конкурс за упис на докторске академске студије у школској 2026/2027. години",
           "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja/konkurs-upis-das-1-rok-2026-27",
           "date": "2026-10-09"
-        },
-        {
-          "title": "Бруцоши, добродошли на Електронски факултет!",
-          "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja/brucosi-dobrodosli-na-elektronski-fakultet-2026",
-          "date": "2026-10-07"
         }
       ]
     },
@@ -58,7 +58,7 @@
       "id": "sip",
       "title": "SIP: studentska obaveštenja",
       "url": "https://sip.elfak.ni.ac.rs/",
-      "checkedAt": "2026-11-13T12:21:24.566Z",
+      "checkedAt": "2026-11-13T19:53:22.161Z",
       "items": [
         {
           "title": "Свечана додела диплома",
@@ -141,7 +141,7 @@
       "id": "instagram",
       "title": "DDOS na Instagramu",
       "url": "https://www.instagram.com/ddos_elfak/",
-      "checkedAt": "2026-11-13T12:21:24.954Z",
+      "checkedAt": "2026-11-13T19:53:22.487Z",
       "items": []
     }
   ]
