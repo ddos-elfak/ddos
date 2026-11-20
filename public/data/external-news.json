@@ -5,7 +5,7 @@
       "title": "Elektronski fakultet",
       "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja",
       "feedUrl": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja?format=feed&type=rss",
-      "checkedAt": "2026-11-20T01:48:25.083Z",
+      "checkedAt": "2026-11-20T13:10:10.808Z",
       "items": [
         {
           "title": "Свечана додела награда и признања студентима",
@@ -58,7 +58,7 @@
       "id": "sip",
       "title": "SIP: studentska obaveštenja",
       "url": "https://sip.elfak.ni.ac.rs/",
-      "checkedAt": "2026-11-20T01:48:26.454Z",
+      "checkedAt": "2026-11-20T13:10:13.036Z",
       "items": [
         {
           "title": "Свечана додела награда и признања студентима",
@@ -72,7 +72,7 @@
         },
         {
           "title": "Презентација стручне праксе компаније Johnson Electric",
-          "url": "https://sip.elfak.ni.ac.rs/article/konkursi/prezentacija-johnson-electric-2026",
+          "url": "https://sip.elfak.ni.ac.rs/article/konkursi/prezentacija-johnson-electric-2027",
           "dateLabel": "Уто, 17. Нов, 2026. у 10:11"
         },
         {
@@ -141,7 +141,7 @@
       "id": "instagram",
       "title": "DDOS na Instagramu",
       "url": "https://www.instagram.com/ddos_elfak/",
-      "checkedAt": "2026-11-20T01:48:26.714Z",
+      "checkedAt": "2026-11-20T13:10:13.300Z",
       "items": []
     }
   ]
