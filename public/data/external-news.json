@@ -5,7 +5,7 @@
       "title": "Elektronski fakultet",
       "url": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja",
       "feedUrl": "https://www.elfak.ni.ac.rs/informacije/novosti-i-obavestenja?format=feed&type=rss",
-      "checkedAt": "2026-11-27T02:56:31.169Z",
+      "checkedAt": "2026-11-27T13:59:29.492Z",
       "items": [
         {
           "title": "Свечана додела награда и признања студентима",
@@ -58,8 +58,13 @@
       "id": "sip",
       "title": "SIP: studentska obaveštenja",
       "url": "https://sip.elfak.ni.ac.rs/",
-      "checkedAt": "2026-11-27T02:56:32.617Z",
+      "checkedAt": "2026-11-27T13:59:31.272Z",
       "items": [
+        {
+          "title": "Winter Cyber Camp 2026 : бесплатан камп сајбер безбедности за студенте",
+          "url": "https://sip.elfak.ni.ac.rs/article/konkursi/winter-cyber-camp-2026",
+          "dateLabel": "Пет, 27. Нов, 2026. у 10:22"
+        },
         {
           "title": "Ослобађање плаћања трошкова и школарине студената у школској 2026/2027. години",
           "url": "https://sip.elfak.ni.ac.rs/article/ostalo/oslobodjenje-od-placanja-skolarine-i-troskova-2026-27",
@@ -129,11 +134,6 @@
           "title": "Novium hakaton",
           "url": "https://sip.elfak.ni.ac.rs/article/ostalo/novium-hakatun-2026",
           "dateLabel": "Чет, 12. Нов, 2026. у 12:30"
-        },
-        {
-          "title": "Предлог за доделу награда и признања студентима поводом Дана Електронског факултета",
-          "url": "https://sip.elfak.ni.ac.rs/article/ostalo/predlog-nagrade-priznanja-studentima-2026",
-          "dateLabel": "Уто, 10. Нов, 2026. у 14:24"
         }
       ]
     },
@@ -141,7 +141,7 @@
       "id": "instagram",
       "title": "DDOS na Instagramu",
       "url": "https://www.instagram.com/ddos_elfak/",
-      "checkedAt": "2026-11-27T02:56:32.944Z",
+      "checkedAt": "2026-11-27T13:59:31.549Z",
       "items": []
     }
   ]
